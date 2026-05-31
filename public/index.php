@@ -1,3 +1,6 @@
+<?php
+include '../includes/navbar.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +9,6 @@
 </head>
 <body>
     <h1>My Portfolio</h1>
-
     <div id="container"></div>
 </body>
 </html>
