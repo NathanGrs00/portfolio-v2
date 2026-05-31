@@ -1,5 +1,5 @@
 <?php
-define('BASE_URL', '/public');
+define('BASE_URL', '/portfolio-v2/public');
 
 $env = parse_ini_file(__DIR__ . '/../.env');
 
