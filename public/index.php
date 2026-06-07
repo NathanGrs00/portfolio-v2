@@ -1,5 +1,6 @@
 <?php
 include '../includes/navbar.php';
+include '../data/list.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
