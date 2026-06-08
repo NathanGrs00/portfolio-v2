@@ -3,6 +3,7 @@
     --color-border:         #2c2c2a;
     --color-text:           #888780;
     --color-text-active:    #f1efe8;
+    --color-button-primary: #e7e7e7;
 
     --font: 'Inter', system-ui, sans-serif;
 }
@@ -13,5 +14,6 @@ body.light {
     --color-border:      #d3d1c7;
     --color-text:        #888780;
     --color-text-active: #111110;
+    --color-button-primary: #888780;
 }
 

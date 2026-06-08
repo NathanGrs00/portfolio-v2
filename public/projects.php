@@ -8,7 +8,7 @@ $stmt = $pdo->query("SELECT * FROM projects");
 <link rel="stylesheet" href="/portfolio-v2/public/assets/css/projects.css">
 
 <div class="projects-section">
-    <h1 class="projects-section__title">Projects</h1>
+    <h1 class="projects-section-title">Projects</h1>
 
     <div class="project-list">
         <?php while ($item = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
