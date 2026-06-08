@@ -1,0 +1,10 @@
+@import '_variables.css';
+
+.project-card {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+#project-ov-gh-button {
+    background: var(--color-border);
+}

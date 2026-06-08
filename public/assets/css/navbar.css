@@ -1,15 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap');
+@import url('./_variables.css');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-    --nav-bg:          #111110;
-    --nav-border:      #2c2c2a;
-    --nav-text:        #888780;
-    --nav-text-active: #f1efe8;
     --nav-height:      56px;
-    --nav-font:        'Inter', system-ui, sans-serif;
-    --nav-mono:        'IBM Plex Mono', monospace;
     --transition:      .15s ease;
 }
 
@@ -17,9 +12,9 @@ nav.site-nav {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: var(--nav-bg);
-    border-bottom: 1px solid var(--nav-border);
-    font-family: var(--nav-font);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    font-family: var(--font);
 }
 
 .nav-inner {
@@ -32,17 +27,17 @@ nav.site-nav {
 }
 
 .nav-brand {
-    font-family: var(--nav-mono);
+    font-family: 'IBM Plex Mono', monospace;
     font-size: .85rem;
     font-weight: 500;
-    color: var(--nav-text-active);
+    color: var(--color-text-active);
     text-decoration: none;
     letter-spacing: .08em;
     margin-right: 3rem;
 }
 .nav-brand::before {
     content: '// ';
-    color: var(--nav-text);
+    color: var(--color-text);
     font-size: .75rem;
 }
 .nav-brand:hover { opacity: .85; }
@@ -63,7 +58,7 @@ nav.site-nav {
     gap: .4rem;
     height: var(--nav-height);
     padding: 0 .75rem;
-    color: var(--nav-text);
+    color: var(--color-text);
     text-decoration: none;
     font-size: .8rem;
     font-weight: 400;
@@ -74,10 +69,10 @@ nav.site-nav {
     white-space: nowrap;
 }
 .nav-link i { font-size: 15px; }
-.nav-link:hover { color: var(--nav-text-active); }
+.nav-link:hover { color: var(--color-text-active); }
 .nav-link.active {
-    color: var(--nav-text-active);
-    border-bottom-color: var(--nav-text-active);
+    color: var(--color-text-active);
+    border-bottom-color: var(--color-text-active);
 }
 
 .nav-right {
@@ -89,9 +84,9 @@ nav.site-nav {
 
 .theme-toggle {
     background: none;
-    border: 1px solid var(--nav-border);
+    border: 1px solid var(--color-border);
     cursor: pointer;
-    color: var(--nav-text);
+    color: var(--color-text);
     width: 32px;
     height: 32px;
     border-radius: 4px;
@@ -102,16 +97,8 @@ nav.site-nav {
     font-size: 15px;
 }
 .theme-toggle:hover {
-    color: var(--nav-text-active);
-    border-color: var(--nav-text);
-}
-
-/* ── Light mode ── */
-body.light {
-    --nav-bg:          #f1efe8;
-    --nav-border:      #d3d1c7;
-    --nav-text:        #888780;
-    --nav-text-active: #111110;
+    color: var(--color-text-active);
+    border-color: var(--color-text);
 }
 
 /* ── Mobile ── */
@@ -120,7 +107,7 @@ body.light {
     background: none;
     border: none;
     cursor: pointer;
-    color: var(--nav-text);
+    color: var(--color-text);
     font-size: 1.2rem;
     padding: .25rem;
     margin-left: auto;
@@ -137,8 +124,8 @@ body.light {
         position: absolute;
         top: var(--nav-height);
         left: 0; right: 0;
-        background: var(--nav-bg);
-        border-bottom: 1px solid var(--nav-border);
+        background: var(--color-bg);
+        border-bottom: 1px solid var(--color-border);
         padding: .5rem 0;
     }
     .nav-items.open { display: flex; }
@@ -151,6 +138,6 @@ body.light {
     }
     .nav-link.active {
         border-bottom-color: transparent;
-        border-left-color: var(--nav-text-active);
+        border-left-color: var(--color-text-active);
     }
 }

@@ -1,10 +1,17 @@
 <?php
 ?>
 <div class="project-card">
-    <img src="<?= htmlspecialchars($item['image']) ?>"
-         alt="<?= htmlspecialchars($item['title']) ?>">
-
-    <h2><?= htmlspecialchars($item['title']) ?></h2>
-
-<p><?= htmlspecialchars($item['description']) ?></p>
+    <h2 class="project-card__title">
+        <?= htmlspecialchars($item['name']) ?>
+    </h2>
+    <p>
+        <?= htmlspecialchars($item['short_desc']) ?>
+    </p>
+    <button id="project-ov-gh-button">
+        GH
+    </button>
+    <button>
+        View more
+    </button>
+    <hr/>
 </div>

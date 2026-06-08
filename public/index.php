@@ -1,16 +1,14 @@
 <?php
 include '../includes/navbar.php';
-include '../data/list.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="assets/css/style.css">
     <title>Nathan Geers | Portfolio</title>
+    <link rel="stylesheet" href="/portfolio-v2/public/assets/css/index.css">
 </head>
 <body>
-    <h1>My Portfolio</h1>
-    <div id="container"></div>
+<?php include 'projects.php'; ?>
 </body>
 </html>
 

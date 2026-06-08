@@ -5,20 +5,14 @@ require_once __DIR__ . '/../data/db.php';
 $stmt = $pdo->query("SELECT * FROM projects");
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/list.css">
-    <title>Projects | Nathan Geers</title>
-</head>
-<body>
-    <h1>Projects</h1>
+<link rel="stylesheet" href="/portfolio-v2/public/assets/css/projects.css">
+
+<div class="projects-section">
+    <h1 class="projects-section__title">Projects</h1>
 
     <div class="project-list">
         <?php while ($item = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
             <?php include __DIR__ . '/../includes/project_card.php'; ?>
         <?php endwhile; ?>
     </div>
-
-</body>
-</html>
+</div>
