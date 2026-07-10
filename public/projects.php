@@ -11,8 +11,14 @@ $stmt = $pdo->query("SELECT * FROM projects");
     <h1 class="projects-section-title">Projects</h1>
 
     <div class="project-list">
+        <?php $isFirst = true; ?>
         <?php while ($item = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-            <?php include __DIR__ . '/../includes/project_card.php'; ?>
+            <?php if ($isFirst): ?>
+                <?php include __DIR__ . '/../includes/project_card_featured.php'; ?>
+                <?php $isFirst = false; ?>
+            <?php else: ?>
+                <?php include __DIR__ . '/../includes/project_card.php'; ?>
+            <?php endif; ?>
         <?php endwhile; ?>
     </div>
 </div>
