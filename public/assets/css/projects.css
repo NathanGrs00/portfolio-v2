@@ -1,5 +1,8 @@
 @import '_variables.css';
 
+hr {
+    border: 1px solid var(--color-border);
+}
 .projects-section-title {
     color: var(--color-text-active);
     margin-left: 20px;
@@ -88,10 +91,14 @@
     padding: 5px;
 }
 
+.project-role {
+    margin-left: 10px;
+}
+
 .featured-project-card-media {
     color: var(--color-text);
     flex: 1 1 300px;
-    max-width: 40%;
+    max-width: 45%;
 }
 
 .featured-project-media-box {
@@ -171,6 +178,7 @@
     max-width: 50%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 3px;
     min-height: 100px;
     color: var(--color-text);

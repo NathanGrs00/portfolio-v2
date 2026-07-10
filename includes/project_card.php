@@ -16,8 +16,14 @@
             </p>
             <div class="project-card-techstack">
                 <?php foreach (explode(',', $item['tech_stack']) as $tech): ?>
-                    <button class="project-tech-badge"><?= htmlspecialchars(trim($tech)) ?></button>
+                    <button class="project-tech-badge">
+                        <?= htmlspecialchars(trim($tech)) ?>
+                    </button>
                 <?php endforeach; ?>
+
+                <span class="project-role">
+                    <?= htmlspecialchars($item['role']) ?>
+                </span>
             </div>
         </div>
         <div class="project-card-buttons">

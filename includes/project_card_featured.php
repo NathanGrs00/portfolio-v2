@@ -24,7 +24,7 @@
                 <p class="featured-project-role">Role: <?= htmlspecialchars($item['role']) ?></p>
             <?php endif; ?>
 
-            <div class="project-card-techstack">
+            <div class="featured-project-card-techstack">
                 <?php foreach (explode(',', $item['tech_stack']) as $tech): ?>
                     <button class="project-tech-badge"><?= htmlspecialchars(trim($tech)) ?></button>
                 <?php endforeach; ?>
