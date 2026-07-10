@@ -2,6 +2,18 @@
 ?>
 <div class="featured-project-card">
     <div class="featured-project-grid">
+        <div class="featured-project-card-media">
+            <div class="featured-project-media-box">
+                <img src="<?= htmlspecialchars($item['media_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+                <?php if (!empty($item['video_url'])): ?>
+                    <div class="featured-project-play-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
         <div class="featured-project-card-data">
             <div class="featured-project-meta">
                 <?php if (!empty($item['category'])): ?>
@@ -31,6 +43,9 @@
             </div>
 
             <div class="project-card-buttons">
+                <a>
+                    <i class="ti ti-download"></i>
+                </a>
                 <button class="project-ov-gh-button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0z" fill="none" />
@@ -41,19 +56,6 @@
                 <button class="project-ov-view-more-button">
                     View more <i class="ti ti-arrow-right"></i>
                 </button>
-            </div>
-        </div>
-
-        <div class="featured-project-card-media">
-            <div class="featured-project-media-box">
-                <img src="<?= htmlspecialchars($item['media_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
-                <?php if (!empty($item['video_url'])): ?>
-                    <div class="featured-project-play-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M8 5v14l11-7z" />
-                        </svg>
-                    </div>
-                <?php endif; ?>
             </div>
         </div>
     </div>

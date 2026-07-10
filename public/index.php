@@ -8,7 +8,10 @@ include '../includes/navbar.php';
     <link rel="stylesheet" href="/portfolio-v2/public/assets/css/index.css">
 </head>
 <body>
-<?php include 'projects.php'; ?>
+<?php
+include 'about.php';
+include 'projects.php';
+?>
 </body>
 </html>
 

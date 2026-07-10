@@ -1,0 +1,14 @@
+@import '_variables.css';
+
+.about-section {
+    color: var(--color-button-primary);
+    padding: 20px;
+}
+
+.about-data-available {
+    background: var(--color-border);
+}
+
+.about-data-description {
+    color: var(--color-text);
+}

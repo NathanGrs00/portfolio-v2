@@ -1,4 +1,6 @@
-@import url('./_variables.css');
+@import '_variables.css';
+
 body {
     background: var(--color-bg);
+    font-family: var(--font), serif;
 }
