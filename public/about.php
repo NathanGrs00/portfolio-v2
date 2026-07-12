@@ -1,9 +1,8 @@
 <?php
 require_once __DIR__ . '/../data/db.php';
 
-/** @var PDO $pdo */
-$stmt = $pdo->query("SELECT * FROM about");
-$about = $stmt->fetch(PDO::FETCH_ASSOC);
+$rows  = supabaseRequest('about?select=*&limit=1');
+$about = isset($rows[0]) ? $rows[0] : array();
 ?>
 
 <link rel="stylesheet" href="/portfolio-v2/public/assets/css/about.css">
@@ -32,7 +31,7 @@ $about = $stmt->fetch(PDO::FETCH_ASSOC);
             </p>
 
             <div class="about-skills">
-                <?php foreach (explode(',', $about['skills']) as $skill): ?>
+                <?php foreach (explode(',', $about['tech_stack']) as $skill): ?>
                     <button class="about-skill-badge"><?= htmlspecialchars(trim($skill)) ?></button>
                 <?php endforeach; ?>
             </div>

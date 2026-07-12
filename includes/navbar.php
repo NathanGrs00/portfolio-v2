@@ -1,18 +1,16 @@
 <?php
 require_once __DIR__ . '/../data/db.php';
 
-/** @var PDO $pdo */
-$stmt = $pdo->query("SELECT * FROM navigation WHERE active = 1");
-$items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$items = supabaseRequest('navigation?select=*&active=eq.1');
 
 $active = $_SERVER['REQUEST_URI'];
 
-$icons = [
+$icons = array(
     '/'             => 'ti-home',
     '/projects.php' => 'ti-briefcase',
     '/about.php'    => 'ti-user',
     '/contact.php'  => 'ti-mail',
-];
+);
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/navbar.css">
@@ -62,4 +60,3 @@ $icons = [
         document.getElementById('theme-icon').className = 'ti ti-moon';
     }
 </script>
-
