@@ -8,7 +8,6 @@ $about = isset($rows[0]) ? $rows[0] : array();
 <link rel="stylesheet" href="/portfolio-v2/public/assets/css/about.css">
 
 <div class="about-section">
-    <h1 class="about-section-title">About</h1>
     <div class="about-wrapper">
         <div class="about-data">
             <div class="about-available">
@@ -23,11 +22,11 @@ $about = isset($rows[0]) ? $rows[0] : array();
 
             <h2 class="about-intro">
                 Hi, I'm Nathan. <br/>
-                I build websites, apps, and software solutions.
+                I build websites, apps, and <br/> software solutions.
             </h2>
 
             <p class="about-description">
-                Full-stack developer with a passion for structure and clean code.
+                Full-stack developer with a passion <br/>for structure and clean code.
             </p>
 
             <div class="about-skills">
@@ -59,12 +58,13 @@ $about = isset($rows[0]) ? $rows[0] : array();
         </div>
         <div class="about-picture">
             <div class="about-picture-image">
-
+                <img src="<?= htmlspecialchars($about['image_url']) ?>" alt="Profile Picture">
             </div>
             <div class="about-picture-place">
-
+                <?= htmlspecialchars($about['current_place']) ?>
             </div>
             <div class="about-picture-country">
+                <?= htmlspecialchars($about['current_country']) ?>
             </div>
         </div>
     </div>

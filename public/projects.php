@@ -5,7 +5,6 @@ $projects = supabaseRequest('projects?select=*');
 ?>
 <link rel="stylesheet" href="/portfolio-v2/public/assets/css/projects.css">
 <div class="projects-section">
-    <h1 class="projects-section-title">Projects</h1>
     <div class="project-list">
         <?php foreach ($projects as $index => $item): ?>
             <?php if ($index === 0): ?>
