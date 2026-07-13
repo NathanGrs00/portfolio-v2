@@ -11,6 +11,14 @@ $icons = array(
     '/about.php'    => 'ti-user',
     '/contact.php'  => 'ti-mail',
 );
+
+// Map each stored URL to the id of the section it should scroll to
+$sectionMap = array(
+    '/'             => null, // null = scroll to top
+    '/about.php'    => 'about-section',
+    '/projects.php' => 'projects-section',
+    '/contact.php'  => 'contact-section',
+);
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/navbar.css">
@@ -24,15 +32,16 @@ $icons = array(
             <i class="ti ti-menu-2" aria-hidden="true"></i>
         </button>
 
-
         <ul class="nav-items">
             <?php foreach ($items as $item):
-                $isActive = rtrim(BASE_URL . $item['url'], '/') === rtrim($active, '/');
-                $icon     = isset($icons[$item['url']]) ? $icons[$item['url']] : 'ti-circle';
+                $section = isset($sectionMap[$item['url']]) ? $sectionMap[$item['url']] : null;
+                $href    = $section ? '#' . $section : '#top';
+                $icon    = isset($icons[$item['url']]) ? $icons[$item['url']] : 'ti-circle';
                 ?>
                 <li class="nav-item">
-                    <a href="<?= BASE_URL . htmlspecialchars($item['url']) ?>"
-                       class="nav-link<?= $isActive ? ' active' : '' ?>">
+                    <a href="<?= $href ?>"
+                       class="nav-link"
+                       data-section="<?= $section ? htmlspecialchars($section) : 'top' ?>">
                         <i class="ti <?= $icon ?>" aria-hidden="true"></i>
                         <?= htmlspecialchars($item['label']) ?>
                     </a>
@@ -49,6 +58,7 @@ $icons = array(
     </div>
 </nav>
 
+
 <script>
     function toggleTheme() {
         const isLight = document.body.classList.toggle('light');
@@ -59,4 +69,42 @@ $icons = array(
         document.body.classList.add('light');
         document.getElementById('theme-icon').className = 'ti ti-moon';
     }
+
+    // Smooth scroll to sections, offset by navbar height
+    document.querySelectorAll('.nav-link, .nav-brand').forEach(link => {
+        link.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (!href.startsWith('#')) return;
+
+            e.preventDefault();
+            document.querySelector('.nav-items').classList.remove('open');
+
+            const navHeight = document.querySelector('.site-nav').offsetHeight;
+
+            if (href === '#top') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+
+            const target = document.querySelector(href);
+            if (target) {
+                const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Highlight the nav link for whichever section is in view
+    const sections = document.querySelectorAll('[id$="-section"]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.dataset.section === entry.target.id);
+                });
+            }
+        });
+    }, { rootMargin: `-${document.querySelector('.site-nav').offsetHeight + 20}px 0px -60% 0px` });
+    sections.forEach(section => observer.observe(section));
 </script>

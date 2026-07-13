@@ -12,6 +12,7 @@ include '../includes/navbar.php';
     <?php
     include 'about.php';
     include 'projects.php';
+    include 'contact.php';
     ?>
 </div>
 </body>

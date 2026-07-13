@@ -7,7 +7,7 @@ $about = isset($rows[0]) ? $rows[0] : array();
 
 <link rel="stylesheet" href="/portfolio-v2/public/assets/css/about.css">
 
-<div class="about-section">
+<div class="about-section" id="about-section">
     <div class="about-wrapper">
         <div class="about-data">
             <div class="about-available">
