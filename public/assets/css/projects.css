@@ -4,8 +4,12 @@ hr {
     border: 1px solid var(--color-border);
 }
 
+.projects-section {
+    padding: 0 25px;
+}
+
 .project-card {
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .project-grid {
@@ -182,8 +186,4 @@ hr {
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
-}
-
-.featured-project-card {
-    padding: 20px;
 }
