@@ -31,7 +31,26 @@ $about = isset($rows[0]) ? $rows[0] : array();
 
             <div class="about-skills">
                 <?php foreach (explode(',', $about['tech_stack']) as $skill): ?>
-                    <button class="about-skill-badge"><?= htmlspecialchars(trim($skill)) ?></button>
+
+                    <?php
+                        $skillName = trim($skill);
+                        $skillKey = strtolower($skillName);
+                        $techData = $technologies[$skillKey] ?? null;
+                    ?>
+
+                    <?php if ($techData): ?>
+                        <span
+                            class="about-skill-badge"
+                            style="--tech-color: <?= htmlspecialchars($techData['color']) ?>"
+                        >
+                            <?= htmlspecialchars($techData['tech_name']) ?>
+                        </span>
+                    <?php else: ?>
+                        <span class="about-skill-badge">
+                            <?= htmlspecialchars($skillName) ?>
+                        </span>
+                    <?php endif; ?>
+
                 <?php endforeach; ?>
             </div>
 
@@ -68,4 +87,5 @@ $about = isset($rows[0]) ? $rows[0] : array();
             </div>
         </div>
     </div>
+    <hr id="about-end-hr">
 </div>

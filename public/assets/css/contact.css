@@ -1,0 +1,256 @@
+:root {
+  --bg: #121212;
+  --panel: #181818;
+  --field: #1f1f1f;
+  --border: #2c2c2c;
+  --text: #f2f2f2;
+  --muted: #9a9a9a;
+  --accent: #22c55e;
+  --accent-bg: rgba(34, 197, 94, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  margin: 0;
+}
+
+.contact-section {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+  padding: 0 25px;
+}
+
+@media (max-width: 640px) {
+  .contact-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+/* ---- Sidebar ---- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+}
+
+.sidebar h2 {
+  font-size: 17px;
+  margin: 0;
+}
+
+.meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.meta-item svg {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.social-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.icon-btn {
+  flex: 1;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.icon-btn:hover {
+  border-color: #444;
+  background: #202020;
+}
+
+.cv-btn {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.cv-btn:hover {
+  border-color: #444;
+  background: #202020;
+}
+
+/* ---- Form ---- */
+.form-panel h1 {
+  font-size: 22px;
+  margin: 0 0 6px;
+}
+
+.form-sub {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 22px;
+}
+
+.form-sub strong {
+  color: var(--text);
+}
+
+label.field-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.field-group {
+  margin-bottom: 18px;
+}
+
+input[type="email"],
+textarea {
+  width: 100%;
+  background: var(--field);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.15s ease;
+}
+
+input[type="email"]::placeholder,
+textarea::placeholder {
+  color: #6b6b6b;
+}
+
+input[type="email"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+textarea {
+  min-height: 120px;
+}
+
+.send-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--text);
+  color: #121212;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.send-btn:hover {
+  opacity: 0.9;
+}
+
+.alert {
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.alert-success {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+}
+
+.alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.alert ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

@@ -1,11 +1,16 @@
-@import '_variables.css';
+@import "_variables.css";
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-    background: var(--color-bg);
-    font-family: var(--font), serif;
+  background: var(--color-bg);
+  font-family: var(--font), serif;
+  overscroll-behavior-y: none;
 }
 
 .main-content {
-    max-width: 1200px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
 }

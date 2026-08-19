@@ -1,197 +1,217 @@
-@import '_variables.css';
+@import "_variables.css";
 
 .about-section {
-    color: var(--color-button-primary);
-    padding: 40px 25px;
+  color: var(--color-button-primary);
+  padding: 40px 25px;
 }
 
 .about-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 60px;
-    max-width: 1100px;
-    flex-wrap: wrap-reverse;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  max-width: 1100px;
+  flex-wrap: wrap-reverse;
 }
 
 .about-data {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1 1 380px;
-    min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 380px;
+  min-width: 280px;
 }
 
 .about-intro {
-    font-size: 2.25rem;
-    line-height: 1.25;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin: 0;
+  font-size: 2.25rem;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
 }
 
 .about-description {
-    margin-top: 16px;
-    color: var(--color-text);
-    font-size: 1rem;
-    line-height: 1.6;
-    max-width: 480px;
+  margin-top: 16px;
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 480px;
 }
 
 .about-skills {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .about-skill-badge {
-    padding: 6px 14px;
-    border-radius: 9px;
-    background: var(--color-border);
-    color: var(--color-button-primary);
-    border: 1px solid var(--color-text);
-    font-size: 0.8rem;
-    cursor: default;
-    transition: transform 0.2s ease;
+  padding: 6px 14px;
+  border-radius: 9px;
+
+  background: color-mix(
+    in srgb,
+    var(--tech-color, var(--color-border)) 12%,
+    var(--color-border)
+  );
+
+  color: #ffffff;
+
+  border: 1px solid
+    color-mix(in srgb, var(--tech-color, var(--color-text)) 45%, transparent);
+
+  font-size: 0.8rem;
+  cursor: default;
+  transition: transform 0.2s ease;
 }
 
 .about-skill-badge:hover {
-    transform: translateY(-2px);
+  transform: translateY(-2px);
 }
 
 .about-available {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    margin-bottom: 15px;
-    border-radius: 9px;
-    border: 1px solid rgba(134, 239, 172, 0.3);
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #86efac;
-    background: rgba(134, 239, 172, 0.12);
-    width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  margin-bottom: 15px;
+  border-radius: 9px;
+  border: 1px solid rgba(134, 239, 172, 0.3);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #86efac;
+  background: rgba(134, 239, 172, 0.12);
+  width: fit-content;
 }
 
 .about-available-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #86efac;
-    box-shadow: 0 0 0 3px rgba(134, 239, 172, 0.25);
-    animation: about-pulse 2s infinite;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #86efac;
+  box-shadow: 0 0 0 3px rgba(134, 239, 172, 0.25);
+  animation: about-pulse 2s infinite;
 }
 
 .about-available-dot-off {
-    background: #9ca3af;
-    box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2);
-    animation: none;
+  background: #9ca3af;
+  box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2);
+  animation: none;
 }
 
 @keyframes about-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .about-buttons {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 28px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
 }
 
 .about-buttons a {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .about-buttons a:hover {
-    opacity: 0.85;
-    transform: translateY(-1px);
+  opacity: 0.85;
+  transform: translateY(-1px);
 }
 
 .about-view-more {
-    background: #ffffff;
-    color: #111111;
+  background: #ffffff;
+  color: #111111;
 }
 
 .about-github-button,
 .about-linkedin-button,
 .about-resume-button {
-    background: #1a1a1a;
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .about-picture {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
 }
 
 .about-picture-image {
-    width: 260px;
-    height: 260px;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
-    border: 4px solid rgba(255, 255, 255, 0.06);
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  border: 4px solid rgba(255, 255, 255, 0.06);
 }
 
 .about-picture-image img {
-    width: 150%;
-    height: 150%;
-    object-fit: cover;
-    display: block;
-    transform: translate(-10%, -15%);
+  width: 150%;
+  height: 150%;
+  object-fit: cover;
+  display: block;
+  transform: translate(-10%, -15%);
 }
 
 .about-picture-place {
-    margin-top: 20px;
-    font-weight: 600;
-    font-size: 0.95rem;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
 .about-picture-country {
-    margin-top: 4px;
-    font-size: 0.85rem;
-    color: var(--color-text);
-    opacity: 0.7;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  opacity: 0.7;
+}
+
+#about-end-hr {
+  margin-top: 40px;
 }
 
 @media (max-width: 768px) {
-    .about-wrapper {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 36px;
-    }
+  .about-wrapper {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 36px;
+  }
 
-    .about-data {
-        align-items: center;
-    }
+  .about-data {
+    align-items: center;
+  }
 
-    .about-skills,
-    .about-buttons {
-        justify-content: center;
-    }
+  .about-skills,
+  .about-buttons {
+    justify-content: center;
+  }
 
-    .about-description {
-        max-width: 100%;
-    }
+  .about-description {
+    max-width: 100%;
+  }
 
-    .about-intro {
-        font-size: 1.75rem;
-    }
+  .about-intro {
+    font-size: 1.75rem;
+  }
 }

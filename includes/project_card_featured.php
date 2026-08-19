@@ -29,7 +29,7 @@
                 <?= htmlspecialchars($item['name']) ?>
             </h2>
             <p>
-                <?= htmlspecialchars($item['short_desc']) ?>
+                <?= nl2br(htmlspecialchars(str_replace('\n', "\n", $item['short_desc']))) ?>
             </p>
 
             <?php if (!empty($item['role'])): ?>
@@ -38,15 +38,45 @@
 
             <div class="featured-project-card-techstack">
                 <?php foreach (explode(',', $item['tech_stack']) as $tech): ?>
-                    <button class="project-tech-badge"><?= htmlspecialchars(trim($tech)) ?></button>
+
+                    <?php
+                        $techName = trim($tech);
+                        $techKey = strtolower($techName);
+                        $techData = $technologies[$techKey] ?? null;
+                    ?>
+
+                    <?php if ($techData): ?>
+
+                        <span
+                            class="project-tech-badge"
+                            style="--tech-color: <?= htmlspecialchars($techData['color']) ?>"
+                        >
+                            <?= htmlspecialchars($techData['tech_name']) ?>
+                        </span>
+
+                    <?php else: ?>
+
+                        <span class="project-tech-badge">
+                            <?= htmlspecialchars($techName) ?>
+                        </span>
+
+                    <?php endif; ?>
+
                 <?php endforeach; ?>
             </div>
 
             <div class="project-card-buttons">
-                <button class="project-ov-gh-button">
-                    <i class="ti ti-brand-github"></i>
-                    Github
-                </button>
+                <?php if (!empty($item['github_url'])): ?>
+                    <a
+                        href="<?= htmlspecialchars($item['github_url']) ?>"
+                        class="project-ov-gh-button"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="ti ti-brand-github"></i>
+                        Github
+                    </a>
+                <?php endif; ?>
                 <button class="project-ov-view-more-button">
                     View more <i class="ti ti-arrow-right"></i>
                 </button>
