@@ -29,5 +29,6 @@ include '../includes/navbar.php';
     ?>
 </div>
 <script src="/portfolio-v2/public/assets/js/smoothing.js"></script>
+<script src="/portfolio-v2/public/assets/js/project-filter.js"></script>
 </body>
 </html>

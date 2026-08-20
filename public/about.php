@@ -87,5 +87,4 @@ $about = isset($rows[0]) ? $rows[0] : array();
             </div>
         </div>
     </div>
-    <hr id="about-end-hr">
 </div>

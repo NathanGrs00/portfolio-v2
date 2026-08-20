@@ -114,6 +114,10 @@ hr {
   margin-left: 10px;
 }
 
+.featured-project-card {
+  margin-bottom: 20px;
+}
+
 .featured-project-card-media {
   color: var(--color-text);
   flex: 1 1 300px;
@@ -207,4 +211,95 @@ hr {
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
+}
+
+.projects-section {
+  position: relative;
+}
+
+.project-filter {
+  position: relative;
+  z-index: 100;
+}
+
+.project-filter-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+}
+
+.project-filter-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  left: auto;
+  width: 320px;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.project-filter-menu.is-open {
+  display: block;
+}
+
+.filter-group {
+  margin-bottom: 1.5rem;
+}
+
+.filter-group:last-child {
+  margin-bottom: 0;
+}
+
+.filter-group-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-option {
+  cursor: pointer;
+}
+
+.filter-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.filter-option span {
+  display: inline-block;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.filter-option input:checked + span {
+  background: #111;
+  color: white;
+  border-color: #111;
+}
+
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
 }
