@@ -22,9 +22,30 @@ foreach ($technologyRows as $technology) {
     <link rel="stylesheet" href="/portfolio-v2/public/assets/css/index.css">
     <link rel="stylesheet" href="/portfolio-v2/public/assets/css/contact.css">
     <link rel="stylesheet" href="/portfolio-v2/public/assets/css/footer.css">
+    <link rel="stylesheet" href="/portfolio-v2/public/assets/css/preloader.css">
 </head>
 
 <body id="top">
+
+<div id="preloader">
+    <svg viewBox="0 0 120 120" width="80" height="80" class="preloader-svg">
+        <circle
+            cx="60" cy="60" r="50"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-dasharray="80 220"
+            class="preloader-ring"
+        />
+        <text
+            x="60" y="60"
+            text-anchor="middle"
+            dominant-baseline="central"
+            class="preloader-letters"
+        >NG</text>
+    </svg>
+</div>
 
 <?php include '../includes/navbar.php'; ?>
 
@@ -46,7 +67,7 @@ foreach ($technologyRows as $technology) {
         </span>
 
         <span class="footer-meta">
-            © <?= date('Y') ?> · Built with intention
+            © <?= date('Y') ?> · Built with love!
         </span>
 
         <a href="#top" class="footer-top">
@@ -57,6 +78,7 @@ foreach ($technologyRows as $technology) {
     </div>
 </footer>
 
+<script src="/portfolio-v2/public/assets/js/preloader.js"></script>
 <script src="/portfolio-v2/public/assets/js/smoothing.js"></script>
 <script src="/portfolio-v2/public/assets/js/project-filter.js"></script>
 <script

@@ -65,3 +65,58 @@ body {
     width: min(calc(100% - (var(--gutter) * 2)), var(--container-lg));
   }
 }
+
+/* ============================================================
+   PRELOADER
+   ============================================================ */
+
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d0d0d;
+  color: #ffffff;
+  transition:
+    background-color 1.8s ease,
+    visibility 1.8s ease;
+}
+
+#preloader.loaded {
+  background-color: transparent;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-svg {
+  overflow: visible;
+  transition: opacity 1.2s ease;
+}
+
+#preloader.loaded .preloader-svg {
+  opacity: 0;
+}
+
+.preloader-ring {
+  transform-origin: 60px 60px;
+  animation: preloader-spin 1s linear infinite;
+}
+
+.preloader-letters {
+  font-family: "Your-Font", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  fill: #ffffff;
+  opacity: 0.9;
+}
+
+@keyframes preloader-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -10,6 +10,11 @@ window.addEventListener(
     // Ignore pinch-to-zoom
     if (event.ctrlKey) return;
 
+    // Let elements that manage their own scrolling handle the event
+    if (event.target.closest(".project-filter-menu")) {
+      return;
+    }
+
     // Trackpads usually produce smaller, more frequent deltas.
     // Mouse wheels usually produce larger, discrete deltas.
     const isLikelyMouseWheel = Math.abs(event.deltaY) >= 30;

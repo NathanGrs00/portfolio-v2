@@ -87,8 +87,6 @@ nav.site-nav {
   content: "// ";
 
   color: var(--text-tertiary);
-
-  font-size: var(--text-xs);
 }
 
 .nav-brand:hover {

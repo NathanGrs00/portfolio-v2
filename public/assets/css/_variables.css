@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400&display=swap");
 
 /* ============================================================
    EDITORIAL PORTFOLIO
@@ -23,7 +23,7 @@
 
   /* Font families */
 
-  --font-display: "Instrument Serif", Georgia, serif;
+  --font-display: "Source Serif 4", Georgia, serif;
 
   --font-body:
     "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -180,8 +180,8 @@
 
   --z-base: 0;
   --z-content: 1;
-  --z-header: 100;
-  --z-dropdown: 200;
+  --z-dropdown: 100;
+  --z-header: 200;
   --z-modal: 300;
   --z-overlay: 400;
   --z-toast: 500;

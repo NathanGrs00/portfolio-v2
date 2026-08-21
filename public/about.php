@@ -22,7 +22,7 @@ $about = isset($rows[0]) ? $rows[0] : array();
 
             <h2 class="about-intro">
                 Hi, I'm Nathan. <br/>
-                I build websites, apps, and <br/> software solutions.
+                I build software solutions.
             </h2>
 
             <p class="about-description">

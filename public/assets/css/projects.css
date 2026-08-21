@@ -586,25 +586,19 @@
 
 .project-filter-menu {
   display: none;
-
   position: absolute;
-
   top: calc(100% + var(--space-2));
   right: 0;
-
   width: 320px;
-
   padding: var(--space-4);
-
   background: var(--surface);
-
   border: 1px solid var(--border);
-
   border-radius: var(--radius-md);
-
   box-shadow: var(--shadow-lg);
-
   z-index: var(--z-dropdown);
+  max-height: 400px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .project-filter-menu.is-open {
@@ -637,6 +631,10 @@
   letter-spacing: var(--tracking-label);
 
   text-transform: uppercase;
+}
+
+.projects-section hr.filter-menu-divider {
+  margin: 20px 0;
 }
 
 /* ============================================================

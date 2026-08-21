@@ -2,9 +2,15 @@ const filterButton = document.getElementById("project-filter-button");
 const filterMenu = document.getElementById("project-filter-menu");
 const filterContainer = document.querySelector(".project-filter");
 
-const filterOptions = document.querySelectorAll('input[name="project-tag"]');
-
 const projects = document.querySelectorAll(".project-filter-item");
+
+// Filter groups: checkbox name -> matching data attribute on project item
+const filterGroups = [
+  { name: "project-tag", dataKey: "projectTags" },
+  { name: "project_size", dataKey: "projectSize" },
+  { name: "project_people", dataKey: "projectPeople" },
+  { name: "project_context", dataKey: "projectContext" },
+];
 
 // Open / close filter menu
 filterButton.addEventListener("click", (event) => {
@@ -21,23 +27,41 @@ document.addEventListener("click", (event) => {
 });
 
 // Filter projects
-filterOptions.forEach((option) => {
-  option.addEventListener("change", () => {
-    const selectedTags = Array.from(filterOptions)
+function applyFilters() {
+  // Gather selected values per group
+  const selections = filterGroups.map((group) => {
+    const options = document.querySelectorAll(`input[name="${group.name}"]`);
+
+    const selectedValues = Array.from(options)
       .filter((option) => option.checked)
       .map((option) => option.value);
 
-    projects.forEach((project) => {
-      const projectTags = (project.dataset.projectTags || "")
+    return { ...group, selectedValues };
+  });
+
+  projects.forEach((project) => {
+    const matches = selections.every((group) => {
+      if (group.selectedValues.length === 0) return true;
+
+      const projectValues = (project.dataset[group.dataKey] || "")
         .split(",")
         .filter(Boolean);
 
-      const matches = selectedTags.every((tagId) =>
-        projectTags.includes(tagId),
+      // OR within a group: project matches if it has at least one selected value
+      return group.selectedValues.some((value) =>
+        projectValues.includes(value),
       );
-
-      project.style.display =
-        selectedTags.length === 0 || matches ? "" : "none";
     });
+
+    project.style.display = matches ? "" : "none";
+  });
+}
+
+// Attach listeners to every filter checkbox (tags + new groups)
+filterGroups.forEach((group) => {
+  const options = document.querySelectorAll(`input[name="${group.name}"]`);
+
+  options.forEach((option) => {
+    option.addEventListener("change", applyFilters);
   });
 });

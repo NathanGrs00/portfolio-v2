@@ -94,7 +94,6 @@ function h($str) {
         </a>
     </aside>
 
-        <!-- Main field -->
     <section class="card form-panel">
         <h1>Send a message</h1>
         <p class="form-sub">Prefer email? Reach me at <strong><?= h($toEmail) ?></strong></p>
