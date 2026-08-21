@@ -1,101 +1,108 @@
-@import "_variables.css";
+/* ============================================================
+   ABOUT
+   ============================================================ */
+
+@import url("./_variables.css");
+
+/* ============================================================
+   SECTION
+   ============================================================ */
 
 .about-section {
-  color: var(--color-button-primary);
-  padding: 40px 25px;
+  width: 100%;
+
+  padding: var(--space-10) 0;
+
+  color: var(--text);
 }
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
 
 .about-wrapper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 60px;
-  max-width: 1100px;
+  justify-content: space-between;
+
+  gap: var(--space-12);
+
+  width: 100%;
+  max-width: var(--content-width);
+
+  margin: 0 auto;
+
   flex-wrap: wrap-reverse;
 }
 
+/* ============================================================
+   CONTENT
+   ============================================================ */
+
 .about-data {
   display: flex;
+  flex: 1 1 380px;
+
   flex-direction: column;
   justify-content: center;
-  flex: 1 1 380px;
+
   min-width: 280px;
 }
 
-.about-intro {
-  font-size: 2.25rem;
-  line-height: 1.25;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-
-.about-description {
-  margin-top: 16px;
-  color: var(--color-text);
-  font-size: 1rem;
-  line-height: 1.6;
-  max-width: 480px;
-}
-
-.about-skills {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.about-skill-badge {
-  padding: 6px 14px;
-  border-radius: 9px;
-
-  background: color-mix(
-    in srgb,
-    var(--tech-color, var(--color-border)) 12%,
-    var(--color-border)
-  );
-
-  color: #ffffff;
-
-  border: 1px solid
-    color-mix(in srgb, var(--tech-color, var(--color-text)) 45%, transparent);
-
-  font-size: 0.8rem;
-  cursor: default;
-  transition: transform 0.2s ease;
-}
-
-.about-skill-badge:hover {
-  transform: translateY(-2px);
-}
+/* ============================================================
+   AVAILABILITY
+   ============================================================ */
 
 .about-available {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  margin-bottom: 15px;
-  border-radius: 9px;
-  border: 1px solid rgba(134, 239, 172, 0.3);
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #86efac;
-  background: rgba(134, 239, 172, 0.12);
+
+  gap: var(--space-2);
+
   width: fit-content;
+
+  margin-bottom: var(--space-4);
+
+  padding: var(--space-1) var(--space-3);
+
+  color: var(--success);
+
+  background: var(--success-soft);
+
+  border: 1px solid var(--success-border);
+
+  border-radius: var(--radius-sm);
+
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-medium);
+
+  line-height: 1;
+
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
 }
 
 .about-available-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #86efac;
-  box-shadow: 0 0 0 3px rgba(134, 239, 172, 0.25);
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  background: var(--success);
+
+  border-radius: var(--radius-full);
+
+  box-shadow: 0 0 0 3px var(--success-soft);
+
   animation: about-pulse 2s infinite;
 }
 
 .about-available-dot-off {
-  background: #9ca3af;
-  box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2);
+  background: var(--text-tertiary);
+
+  box-shadow: 0 0 0 3px var(--surface-hover);
+
   animation: none;
 }
 
@@ -104,94 +111,281 @@
   100% {
     opacity: 1;
   }
+
   50% {
-    opacity: 0.5;
+    opacity: 0.45;
   }
 }
+
+/* ============================================================
+   INTRO
+   ============================================================ */
+
+.about-intro {
+  margin: 0;
+
+  color: var(--text);
+
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-h2), 4vw, 2.75rem);
+
+  font-weight: var(--weight-regular);
+
+  line-height: 1.12;
+
+  letter-spacing: var(--tracking-heading);
+}
+
+/* ============================================================
+   DESCRIPTION
+   ============================================================ */
+
+.about-description {
+  max-width: 480px;
+
+  margin: var(--space-4) 0 0;
+
+  color: var(--text-secondary);
+
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+
+  line-height: var(--leading-relaxed);
+}
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+
+.about-skills {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: var(--space-2);
+
+  margin-top: var(--space-5);
+}
+
+.about-skill-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: var(--space-2) var(--space-3);
+
+  color: color-mix(in srgb, var(--tech-color, var(--accent)) 75%, var(--text));
+
+  background: color-mix(
+    in srgb,
+    var(--tech-color, var(--accent)) 10%,
+    var(--surface)
+  );
+
+  border: 1px solid
+    color-mix(in srgb, var(--tech-color, var(--accent)) 40%, var(--border));
+
+  border-radius: var(--radius-sm);
+
+  cursor: default;
+
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+
+  line-height: 1;
+
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.about-skill-badge:hover {
+  transform: translateY(-2px);
+
+  background: color-mix(
+    in srgb,
+    var(--tech-color, var(--accent)) 15%,
+    var(--surface)
+  );
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
 
 .about-buttons {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 28px;
+
+  gap: var(--space-2);
+
+  margin-top: var(--space-6);
 }
 
 .about-buttons a {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  justify-content: center;
+
+  gap: var(--space-2);
+
+  min-height: var(--button-height-md);
+
+  padding: var(--space-2) var(--space-4);
+
+  border-radius: var(--radius-sm);
+
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+
+  line-height: 1;
+
   text-decoration: none;
+
   transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
+    color var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .about-buttons a:hover {
-  opacity: 0.85;
   transform: translateY(-1px);
 }
 
-.about-view-more {
-  background: #ffffff;
-  color: #111111;
+.about-buttons a:focus-visible {
+  outline: 2px solid var(--focus-ring);
+
+  outline-offset: 2px;
 }
+
+/* ============================================================
+   PRIMARY / VIEW MORE
+   ============================================================ */
+
+.main-content .about-view-more {
+  color: var(--button-primary-text);
+  background: var(--button-primary-bg);
+  border: 1px solid var(--button-primary-bg);
+}
+
+.main-content .about-view-more:hover {
+  color: var(--button-primary-text);
+  background: var(--button-primary-bg-hover);
+  border-color: var(--button-primary-bg-hover);
+}
+
+/* ============================================================
+   SECONDARY SOCIAL / RESUME BUTTONS
+   ============================================================ */
 
 .about-github-button,
 .about-linkedin-button,
 .about-resume-button {
-  background: #1a1a1a;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--button-secondary-text);
+
+  background: var(--button-secondary-bg);
+
+  border: 1px solid var(--button-secondary-border);
 }
+
+.about-github-button:hover,
+.about-linkedin-button:hover,
+.about-resume-button:hover {
+  color: var(--text);
+
+  background: var(--button-secondary-bg-hover);
+
+  border-color: var(--border-strong);
+}
+
+/* ============================================================
+   PROFILE IMAGE
+   ============================================================ */
 
 .about-picture {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
   flex: 0 0 auto;
+
+  flex-direction: column;
 }
 
 .about-picture-image {
   width: 260px;
   height: 260px;
-  border-radius: 50%;
+
   overflow: hidden;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
-  border: 4px solid rgba(255, 255, 255, 0.06);
+
+  background: var(--surface);
+
+  border: 4px solid var(--border-subtle);
+
+  border-radius: var(--radius-full);
+
+  box-shadow: var(--shadow-lg);
 }
 
 .about-picture-image img {
+  display: block;
+
   width: 150%;
   height: 150%;
+
   object-fit: cover;
-  display: block;
+
   transform: translate(-10%, -15%);
 }
 
+/* ============================================================
+   LOCATION
+   ============================================================ */
+
 .about-picture-place {
-  margin-top: 20px;
-  font-weight: 600;
-  font-size: 0.95rem;
+  margin-top: var(--space-5);
+
+  color: var(--text);
+
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+
+  line-height: var(--leading-normal);
 }
 
 .about-picture-country {
-  margin-top: 4px;
-  font-size: 0.85rem;
-  color: var(--color-text);
-  opacity: 0.7;
+  margin-top: var(--space-1);
+
+  color: var(--text-tertiary);
+
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+
+  line-height: 1.4;
+
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
 }
 
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
 @media (max-width: 768px) {
+  .about-section {
+    padding: var(--space-8) var(--space-4);
+  }
+
   .about-wrapper {
     flex-direction: column-reverse;
+
+    gap: var(--space-9);
+
     text-align: center;
-    gap: 36px;
   }
 
   .about-data {
@@ -207,7 +401,27 @@
     max-width: 100%;
   }
 
+  .about-picture-image {
+    width: 220px;
+    height: 220px;
+  }
+
   .about-intro {
-    font-size: 1.75rem;
+    font-size: var(--text-h2);
+  }
+}
+
+@media (max-width: 480px) {
+  .about-picture-image {
+    width: 190px;
+    height: 190px;
+  }
+
+  .about-buttons {
+    width: 100%;
+  }
+
+  .about-buttons a {
+    flex: 1 1 auto;
   }
 }

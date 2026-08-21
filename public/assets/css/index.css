@@ -1,16 +1,67 @@
-@import "_variables.css";
+@import url("./_variables.css");
+
+/* ============================================================
+   INDEX / HOME
+   ============================================================ */
 
 html {
   scroll-behavior: smooth;
+  background: var(--bg);
+  color: var(--text);
 }
 
 body {
-  background: var(--color-bg);
-  font-family: var(--font), serif;
+  margin: 0;
+
+  background: var(--bg);
+  color: var(--text);
+
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-body);
+
   overscroll-behavior-y: none;
 }
 
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+
 .main-content {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: min(calc(100% - (var(--gutter) * 2)), var(--container-lg));
+
+  margin-inline: auto;
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+
+.main-content > section {
+  width: 100%;
+}
+
+/* ============================================================
+   LINKS
+   ============================================================ */
+
+.main-content a {
+  color: var(--link);
+  transition: color var(--transition-fast);
+}
+
+.main-content a:hover {
+  color: var(--link-hover);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .main-content {
+    width: min(calc(100% - (var(--gutter) * 2)), var(--container-lg));
+  }
 }

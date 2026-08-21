@@ -1,0 +1,180 @@
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+@import url("./_variables.css");
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.site-footer {
+  width: 100%;
+
+  margin-top: var(--space-8);
+
+  background: var(--bg);
+  color: var(--text);
+
+  border-top: 1px solid var(--border-subtle);
+
+  font-family: var(--font-body);
+  min-height: 4rem;
+
+  transition:
+    background var(--transition-normal),
+    border-color var(--transition-normal),
+    color var(--transition-normal);
+}
+
+/* ============================================================
+   INNER
+   Same container system as .nav-inner
+   ============================================================ */
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+
+  width: min(calc(100% - (var(--gutter) * 2)), var(--container-xl));
+
+  height: 4rem;
+
+  margin-inline: auto;
+}
+
+/* ============================================================
+   NAME
+   ============================================================ */
+
+.footer-name {
+  color: var(--text);
+
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+
+  line-height: 1;
+
+  letter-spacing: var(--tracking-label);
+}
+
+/* ============================================================
+   META
+   ============================================================ */
+
+.footer-meta {
+  margin-left: var(--space-10);
+
+  color: var(--text-tertiary);
+
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+
+  line-height: 1;
+
+  letter-spacing: var(--tracking-label);
+}
+
+/* ============================================================
+   BACK TO TOP
+   ============================================================ */
+
+.footer-top {
+  display: inline-flex;
+  align-items: center;
+
+  gap: var(--space-2);
+
+  margin-left: auto;
+
+  color: var(--text-secondary);
+
+  text-decoration: none;
+
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+
+  line-height: 1;
+
+  letter-spacing: var(--tracking-label);
+
+  text-transform: uppercase;
+
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.footer-top i {
+  font-size: var(--icon-sm);
+}
+
+.footer-top:hover {
+  color: var(--accent);
+
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   FOCUS
+   ============================================================ */
+
+.footer-top:focus-visible {
+  outline: 2px solid var(--focus-ring);
+
+  outline-offset: 4px;
+
+  border-radius: var(--radius-xs);
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .footer-inner {
+    min-height: var(--nav-height);
+
+    width: calc(100% - (var(--gutter) * 2));
+  }
+
+  .footer-meta {
+    margin-left: var(--space-4);
+  }
+}
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 480px) {
+  .footer-inner {
+    width: calc(100% - (var(--space-4) * 2));
+
+    flex-wrap: wrap;
+
+    min-height: auto;
+
+    padding-block: var(--space-5);
+
+    gap: var(--space-3);
+  }
+
+  .footer-name {
+    margin-right: auto;
+  }
+
+  .footer-meta {
+    order: 3;
+
+    width: 100%;
+
+    margin-left: 0;
+  }
+
+  .footer-top {
+    margin-left: auto;
+  }
+}

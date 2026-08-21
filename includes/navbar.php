@@ -12,99 +12,323 @@ $icons = array(
     '/contact.php'  => 'ti-mail',
 );
 
-// Map each stored URL to the id of the section it should scroll to
 $sectionMap = array(
-    '/'             => null, // null = scroll to top
+    '/'             => null,
     '/about.php'    => 'about-section',
     '/projects.php' => 'projects-section',
     '/contact.php'  => 'contact-section',
 );
 ?>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/navbar.css">
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+>
+
+<link
+    rel="stylesheet"
+    href="<?= BASE_URL ?>/assets/css/navbar.css"
+>
+
 
 <nav class="site-nav" aria-label="Main navigation">
-    <div class="nav-inner">
-        <a class="nav-brand" href="<?= BASE_URL ?>/">NG</a>
 
-        <button class="nav-toggle" aria-label="Toggle menu"
-                onclick="document.querySelector('.nav-items').classList.toggle('open')">
-            <i class="ti ti-menu-2" aria-hidden="true"></i>
+    <div class="nav-inner">
+
+        <a
+            class="nav-brand"
+            href="<?= BASE_URL ?>/"
+            aria-label="Nathan Geers — Home"
+        >
+            NG
+        </a>
+
+
+        <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+            onclick="toggleNav()"
+        >
+            <i
+                class="ti ti-menu-2"
+                aria-hidden="true"
+            ></i>
         </button>
 
+
         <ul class="nav-items">
+
             <?php foreach ($items as $item):
-                $section = isset($sectionMap[$item['url']]) ? $sectionMap[$item['url']] : null;
-                $href    = $section ? '#' . $section : '#top';
-                $icon    = isset($icons[$item['url']]) ? $icons[$item['url']] : 'ti-circle';
-                ?>
+
+                $section = isset($sectionMap[$item['url']])
+                    ? $sectionMap[$item['url']]
+                    : null;
+
+                $href = $section
+                    ? '#' . $section
+                    : '#top';
+
+                $icon = isset($icons[$item['url']])
+                    ? $icons[$item['url']]
+                    : 'ti-circle';
+
+            ?>
+
                 <li class="nav-item">
-                    <a href="<?= $href ?>"
-                       class="nav-link"
-                       data-section="<?= $section ? htmlspecialchars($section) : 'top' ?>">
-                        <i class="ti <?= $icon ?>" aria-hidden="true"></i>
+
+                    <a
+                        href="<?= $href ?>"
+                        class="nav-link"
+                        data-section="<?= $section
+                            ? htmlspecialchars($section)
+                            : 'top'
+                        ?>"
+                    >
+
+                        <i
+                            class="ti <?= htmlspecialchars($icon) ?>"
+                            aria-hidden="true"
+                        ></i>
+
                         <?= htmlspecialchars($item['label']) ?>
+
                     </a>
+
                 </li>
+
             <?php endforeach; ?>
+
         </ul>
 
+
         <div class="nav-right">
-            <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
-                <i class="ti ti-sun" aria-hidden="true" id="theme-icon"></i>
+
+            <button
+                class="theme-toggle"
+                type="button"
+                aria-label="Toggle theme"
+                onclick="toggleTheme()"
+            >
+                <i
+                    class="ti ti-sun"
+                    aria-hidden="true"
+                    id="theme-icon"
+                ></i>
             </button>
+
         </div>
 
     </div>
+
 </nav>
 
 
 <script>
-    function toggleTheme() {
-        const isLight = document.body.classList.toggle('light');
-        document.getElementById('theme-icon').className = isLight ? 'ti ti-moon' : 'ti ti-sun';
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+function toggleNav() {
+
+    const navItems = document.querySelector('.nav-items');
+    const navToggle = document.querySelector('.nav-toggle');
+
+    if (!navItems || !navToggle) {
+        return;
     }
-    if (localStorage.getItem('theme') === 'light') {
-        document.body.classList.add('light');
-        document.getElementById('theme-icon').className = 'ti ti-moon';
+
+    const isOpen = navItems.classList.toggle('open');
+
+    navToggle.setAttribute(
+        'aria-expanded',
+        isOpen ? 'true' : 'false'
+    );
+}
+
+
+/* ============================================================
+   THEME
+   ============================================================ */
+
+function applyTheme(theme) {
+
+    const root = document.documentElement;
+    const icon = document.getElementById('theme-icon');
+
+    root.setAttribute('data-theme', theme);
+
+    if (icon) {
+        icon.className =
+            theme === 'light'
+                ? 'ti ti-moon'
+                : 'ti ti-sun';
     }
 
-    // Smooth scroll to sections, offset by navbar height
-    document.querySelectorAll('.nav-link, .nav-brand').forEach(link => {
-        link.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (!href.startsWith('#')) return;
+    localStorage.setItem('theme', theme);
+}
 
-            e.preventDefault();
-            document.querySelector('.nav-items').classList.remove('open');
 
-            const navHeight = document.querySelector('.site-nav').offsetHeight;
+function toggleTheme() {
 
-            if (href === '#top') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                return;
-            }
+    const currentTheme =
+        document.documentElement.getAttribute('data-theme')
+        || 'light';
 
-            const target = document.querySelector(href);
-            if (target) {
-                const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
-                window.scrollTo({ top, behavior: 'smooth' });
-            }
+    const nextTheme =
+        currentTheme === 'light'
+            ? 'dark'
+            : 'light';
+
+    applyTheme(nextTheme);
+}
+
+
+/* ============================================================
+   RESTORE SAVED THEME
+   ============================================================ */
+
+(function () {
+
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+        applyTheme(savedTheme);
+    } else {
+        applyTheme('light');
+    }
+
+})();
+
+
+/* ============================================================
+   SMOOTH SECTION SCROLL
+   ============================================================ */
+
+document.querySelectorAll(
+    '.nav-link, .nav-brand'
+).forEach(link => {
+
+    link.addEventListener('click', function (event) {
+
+        const href = this.getAttribute('href');
+
+        if (!href || !href.startsWith('#')) {
+            return;
+        }
+
+        event.preventDefault();
+
+        const navItems =
+            document.querySelector('.nav-items');
+
+        if (navItems) {
+            navItems.classList.remove('open');
+        }
+
+        const navToggle =
+            document.querySelector('.nav-toggle');
+
+        if (navToggle) {
+            navToggle.setAttribute(
+                'aria-expanded',
+                'false'
+            );
+        }
+
+        const nav =
+            document.querySelector('.site-nav');
+
+        const navHeight =
+            nav ? nav.offsetHeight : 0;
+
+
+        if (href === '#top') {
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
+            return;
+        }
+
+
+        const target =
+            document.querySelector(href);
+
+        if (!target) {
+            return;
+        }
+
+        const top =
+            target.getBoundingClientRect().top
+            + window.scrollY
+            - navHeight;
+
+
+        window.scrollTo({
+            top,
+            behavior: 'smooth'
         });
+
     });
 
-    // Highlight the nav link for whichever section is in view
-    const sections = document.querySelectorAll('[id$="-section"]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                navLinks.forEach(link => {
-                    link.classList.toggle('active', link.dataset.section === entry.target.id);
+});
+
+
+/* ============================================================
+   ACTIVE SECTION
+   ============================================================ */
+
+const sections =
+    document.querySelectorAll('[id$="-section"]');
+
+const navLinks =
+    document.querySelectorAll('.nav-link');
+
+const nav =
+    document.querySelector('.site-nav');
+
+
+if (sections.length && navLinks.length) {
+
+    const observer =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    navLinks.forEach(link => {
+
+                        link.classList.toggle(
+                            'active',
+                            link.dataset.section === entry.target.id
+                        );
+
+                    });
+
                 });
+
+            },
+
+            {
+                rootMargin:
+                    `-${(nav?.offsetHeight || 0) + 20}px 0px -60% 0px`
             }
-        });
-    }, { rootMargin: `-${document.querySelector('.site-nav').offsetHeight + 20}px 0px -60% 0px` });
-    sections.forEach(section => observer.observe(section));
+
+        );
+
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+}
 </script>

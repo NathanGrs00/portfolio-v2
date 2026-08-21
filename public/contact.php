@@ -53,15 +53,6 @@ function h($str) {
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — <?= h($yourName) ?></title>
-<link rel="stylesheet" href="/portfolio-v2/public/assets/css/contact.css">
-</head>
-<body>
 
 <div class="contact-section" id="contact-section">
 
@@ -143,6 +134,3 @@ function h($str) {
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="/portfolio-v2/public/assets/js/contact-emailjs.js"></script>
-
-</body>
-</html>
