@@ -49,7 +49,7 @@
   color: var(--text);
 
   font-family: var(--font-display);
-  font-size: var(--text-h2);
+  font-size: var(--text-h3);
   font-weight: var(--weight-regular);
 
   line-height: var(--leading-heading);
@@ -299,7 +299,7 @@
    VIEW MORE BUTTON
    ============================================================ */
 
-.project-ov-view-more-button {
+.main-content .project-ov-view-more-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -317,6 +317,7 @@
   border-radius: var(--radius-sm);
 
   cursor: pointer;
+  text-decoration: none;
 
   font-family: var(--font-body);
   font-size: var(--text-sm);
@@ -328,12 +329,14 @@
     border-color var(--transition-fast);
 }
 
-.project-ov-view-more-button:hover {
+.main-content .project-ov-view-more-button:hover {
+  color: var(--button-primary-text);
   background: var(--button-primary-bg-hover);
   border-color: var(--button-primary-bg-hover);
 }
 
-.project-ov-view-more-button:active {
+.main-content .project-ov-view-more-button:active {
+  color: var(--button-primary-text);
   background: var(--button-primary-bg-active);
   border-color: var(--button-primary-bg-active);
 }

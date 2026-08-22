@@ -69,9 +69,9 @@
                 </a>
             <?php endif; ?>
 
-            <button class="project-ov-view-more-button">
+            <a href="/portfolio-v2/public/project.php?id=<?= urlencode($item['id']) ?>" class="project-ov-view-more-button">
                 View more
-            </button>
+            </a>
         </div>
     </div>
 

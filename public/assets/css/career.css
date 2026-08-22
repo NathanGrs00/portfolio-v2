@@ -1,0 +1,123 @@
+/* ============================================================
+   CAREER TIMELINE
+   ============================================================ */
+
+.career-section {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+}
+
+.career-header h2 {
+  margin-bottom: var(--space-10);
+  font-size: var(--text-h3);
+}
+
+.career-timeline {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-16);
+
+  overflow-x: auto;
+  padding-bottom: var(--space-6);
+
+  scrollbar-width: thin;
+}
+
+.career-timeline-track {
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border);
+  z-index: var(--z-base);
+}
+
+.career-item {
+  position: relative;
+  flex: 0 0 16rem;
+  z-index: var(--z-content);
+}
+
+.career-dot {
+  width: 1rem;
+  height: 1rem;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--border);
+  margin-bottom: var(--space-5);
+}
+
+/* Dot color by type */
+
+.career-dot[data-career-type="school"] {
+  background: var(--info);
+}
+
+.career-dot[data-career-type="internship"] {
+  background: var(--editorial-gold);
+}
+
+.career-dot[data-career-type="work"] {
+  background: var(--success);
+}
+
+.career-item-type {
+  display: inline-block;
+
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+
+  margin-bottom: var(--space-2);
+
+  color: var(--accent);
+}
+
+.career-item-type[data-career-type="school"] {
+  color: var(--info);
+}
+
+.career-item-type[data-career-type="internship"] {
+  color: var(--editorial-gold);
+}
+
+.career-item-type[data-career-type="work"] {
+  color: var(--success);
+}
+
+.career-item-name {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-tight);
+
+  margin: 0 0 var(--space-2);
+}
+
+.career-item-length {
+  display: block;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-3);
+}
+
+.career-item-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: var(--measure-sm);
+}
+
+@media (max-width: 768px) {
+  .career-timeline {
+    gap: var(--space-10);
+  }
+
+  .career-item {
+    flex-basis: 13rem;
+  }
+}

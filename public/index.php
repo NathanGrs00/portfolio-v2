@@ -53,6 +53,7 @@ foreach ($technologyRows as $technology) {
 
     <?php
     include 'about.php';
+    include '../includes/career.php';
     include 'projects.php';
     include 'contact.php';
     ?>
