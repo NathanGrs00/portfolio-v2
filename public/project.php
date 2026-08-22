@@ -9,7 +9,7 @@ if (!$id || !ctype_digit((string)$id)) {
 }
 
 $projects = supabaseRequest(
-    'projects?select=*,project_tags(tag_id,tags(id,name,category))&id=eq.' . urlencode($id)
+    'projects?select=*,project_tags(tag_id,tags(id,name,category)),project_media(media_url,media_type)&id=eq.' . urlencode($id)
 );
 
 $project = $projects[0] ?? null;
@@ -17,6 +17,17 @@ $project = $projects[0] ?? null;
 if (!$project) {
     http_response_code(404);
     die('Project not found.');
+}
+
+$galleryVideo = null;
+$galleryImages = [];
+
+foreach ($project['project_media'] ?? [] as $mediaItem) {
+    if (($mediaItem['media_type'] ?? 'image') === 'video') {
+        $galleryVideo = $mediaItem;
+    } else {
+        $galleryImages[] = $mediaItem;
+    }
 }
 
 $technologyRows = supabaseRequest('tech?select=tech_name,color');
@@ -106,12 +117,40 @@ foreach ($technologyRows as $technology) {
             </div>
         </div>
 
-        <div class="project-detail-media-box">
-            <img
-                src="<?= htmlspecialchars($project['media_url']) ?>"
-                alt="<?= htmlspecialchars($project['name']) ?>"
-            >
+        <div class="project-detail-hero">
+
+            <div class="project-detail-media-box">
+                <img
+                    src="<?= htmlspecialchars($project['media_url']) ?>"
+                    alt="<?= htmlspecialchars($project['name']) ?>"
+                >
+            </div>
+
+            <?php if ($galleryVideo !== null): ?>
+                <div class="project-detail-media-box project-detail-video-box">
+                    <video
+                        src="<?= htmlspecialchars($galleryVideo['media_url']) ?>"
+                        controls
+                        preload="metadata"
+                    ></video>
+                </div>
+            <?php endif; ?>
+
         </div>
+
+        <?php if (!empty($galleryImages)): ?>
+            <div class="project-detail-gallery">
+                <?php foreach ($galleryImages as $mediaItem): ?>
+                    <div class="project-detail-gallery-item">
+                        <img
+                            src="<?= htmlspecialchars($mediaItem['media_url']) ?>"
+                            alt="<?= htmlspecialchars($project['name']) ?>"
+                            loading="lazy"
+                        >
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
 
         <div class="project-detail-body">
 

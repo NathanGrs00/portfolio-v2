@@ -95,7 +95,7 @@ function h($str) {
     </aside>
 
     <section class="card form-panel">
-        <h1>Send a message</h1>
+        <h2 class="form-title">Send a message</h2>
         <p class="form-sub">Prefer email? Reach me at <strong><?= h($toEmail) ?></strong></p>
  
         <div id="form-alert"></div>
