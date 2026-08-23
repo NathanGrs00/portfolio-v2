@@ -1,3 +1,12 @@
+# Block direct access to the .env file
 <Files ".env">
     Require all denied
 </Files>
+
+# Fallback for older Apache 2.2-style hosts (in case "Require all denied" isn't supported)
+<IfModule !mod_authz_core.c>
+    <Files ".env">
+        Order allow,deny
+        Deny from all
+    </Files>
+</IfModule>

@@ -39,17 +39,20 @@ function supabaseRequest($endpoint, $method = 'GET', $data = null)
 
     $response = curl_exec($ch);
 
+
     if ($response === false) {
         $error = curl_error($ch);
         curl_close($ch);
-        die("Supabase request failed: $error");
+        error_log("Supabase request failed: $error");
+        return array();
     }
 
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
     if ($httpCode >= 400) {
-        die("Supabase error ($httpCode): $response");
+        error_log("Supabase error ($httpCode): $response");
+        return array();
     }
 
     $decoded = json_decode($response, true);
