@@ -55,7 +55,7 @@ $about = isset($rows[0]) ? $rows[0] : array();
             </div>
 
             <div class="about-buttons">
-                <a href="" class="about-view-more">
+                <a href="/portfolio-v2/public/index.php#career-section" class="about-view-more">
                     View more <i class="ti ti-arrow-right"></i>
                 </a>
                 <?php if (!empty($about['github_url'])): ?>

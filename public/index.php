@@ -80,7 +80,6 @@ foreach ($technologyRows as $technology) {
 </footer>
 
 <script src="/portfolio-v2/public/assets/js/preloader.js"></script>
-<script src="/portfolio-v2/public/assets/js/smoothing.js"></script>
 <script src="/portfolio-v2/public/assets/js/project-filter.js"></script>
 <script
     src="/portfolio-v2/public/assets/js/tech-stack-truncate.js"

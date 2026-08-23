@@ -5,7 +5,6 @@
    ============================================================ */
 
 html {
-  scroll-behavior: smooth;
   background: var(--bg);
   color: var(--text);
 }
