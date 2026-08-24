@@ -91,4 +91,4 @@ Contributions, issues, and suggestions are welcome. Feel free to open a pull req
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under this [License](LICENSE).
