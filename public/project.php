@@ -58,7 +58,7 @@ foreach ($technologyRows as $technology) {
 <main class="main-content">
     <div class="project-detail-section">
 
-        <a href="/index.php#projects-section" class="project-detail-back">
+        <a href="/#projects-section" class="project-detail-back">
             <i class="ti ti-arrow-left"></i>
             Back to projects
         </a>

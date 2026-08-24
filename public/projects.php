@@ -37,7 +37,7 @@ foreach ($extraFilters as &$config) {
 unset($config);
 ?>
 
-<link rel="stylesheet" href="/portfolio-v2/public/assets/css/projects.css">
+<link rel="stylesheet" href="/assets/css/projects.css">
 
 <div class="projects-section" id="projects-section">
     <hr id="about-end-hr">

@@ -1,19 +1,17 @@
 <?php
 require_once __DIR__ . '/../data/db.php';
 
-$items = supabaseRequest('navigation?select=*&active=eq.1');
+$items = supabaseRequest('navigation?select=*&active=eq.1&order=id.asc');
 
 $active = $_SERVER['REQUEST_URI'];
 
 $icons = array(
-    '/'             => 'ti-home',
-    '/projects.php' => 'ti-briefcase',
     '/about.php'    => 'ti-user',
+    '/projects.php' => 'ti-briefcase',
     '/contact.php'  => 'ti-mail',
 );
 
 $sectionMap = array(
-    '/'             => null,
     '/about.php'    => 'about-section',
     '/projects.php' => 'projects-section',
     '/contact.php'  => 'contact-section',
@@ -70,9 +68,9 @@ $sectionMap = array(
                     : 'ti-circle';
 
                 if ($section) {
-                    $href = 'index.php#' . $section;
+                    $href = '/#' . $section;
                 } else {
-                    $href = 'index.php#top';
+                    $href = '/#top';
                 }
 
             ?>

@@ -11,6 +11,24 @@ if (navToggle && navItems) {
 
     navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
   });
+
+  document.addEventListener("click", (event) => {
+    const isOpen = navItems.classList.contains("open");
+
+    if (!isOpen) {
+      return;
+    }
+
+    const clickedInsideMenu = navItems.contains(event.target);
+    const clickedToggle = navToggle.contains(event.target);
+
+    if (clickedInsideMenu || clickedToggle) {
+      return;
+    }
+
+    navItems.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+  });
 }
 
 /* ============================================================
@@ -58,6 +76,129 @@ if (savedTheme === "dark" || savedTheme === "light") {
 }
 
 /* ============================================================
+   ACTIVE SECTION (shared state, used by both scroll-spy and
+   the click handler below)
+   ============================================================ */
+
+const sections = document.querySelectorAll('[id$="-section"]');
+const navLinks = document.querySelectorAll(".nav-link");
+const nav = document.querySelector(".site-nav");
+
+const setActive = (id) => {
+  navLinks.forEach((link) => {
+    link.classList.toggle("active", link.dataset.section === id);
+  });
+};
+
+/*
+ * While true, the IntersectionObserver callbacks are ignored.
+ * This is turned on right when a nav link is clicked (since we
+ * already know the destination) and turned back off once the
+ * smooth-scroll animation has settled, so the observer doesn't
+ * flicker the active tab for sections passed through mid-flight.
+ */
+let suppressScrollSpy = false;
+let suppressTimeout = null;
+
+if (sections.length && navLinks.length) {
+  const navHeight = nav?.offsetHeight || 0;
+
+  const sectionsArray = Array.from(sections);
+  const lastSection = sectionsArray[sectionsArray.length - 1];
+  const otherSections = sectionsArray.slice(0, -1);
+
+  const intersecting = new Map(
+    sectionsArray.map((section) => [section.id, false]),
+  );
+
+  const recomputeActive = () => {
+    if (suppressScrollSpy) {
+      return;
+    }
+
+    /*
+     * When multiple sections are intersecting at once (common
+     * right at a boundary, since the two observers use
+     * different zones), prefer the LAST one in document order.
+     */
+    let current = null;
+
+    for (const section of sectionsArray) {
+      if (intersecting.get(section.id)) {
+        current = section;
+      }
+    }
+
+    if (current) {
+      setActive(current.id);
+    }
+  };
+
+  const handleEntries = (entries) => {
+    entries.forEach((entry) => {
+      intersecting.set(entry.target.id, entry.isIntersecting);
+    });
+
+    recomputeActive();
+  };
+
+  const observer = new IntersectionObserver(handleEntries, {
+    rootMargin: `-${navHeight + 20}px 0px -60% 0px`,
+  });
+
+  otherSections.forEach((section) => {
+    observer.observe(section);
+  });
+
+  const lastObserver = new IntersectionObserver(handleEntries, {
+    rootMargin: `-${navHeight + 20}px 0px 0px 0px`,
+  });
+
+  lastObserver.observe(lastSection);
+}
+
+/*
+ * Called right before we kick off a programmatic smooth scroll.
+ * Locks in the active tab immediately and pauses scroll-spy
+ * until the scroll settles, so intermediate sections passed
+ * through mid-animation don't flicker the active state.
+ */
+function lockActiveDuringScroll(id) {
+  setActive(id);
+
+  suppressScrollSpy = true;
+
+  clearTimeout(suppressTimeout);
+
+  if ("onscrollend" in window) {
+    const resume = () => {
+      suppressScrollSpy = false;
+      window.removeEventListener("scrollend", resume);
+    };
+
+    window.addEventListener("scrollend", resume);
+
+    /*
+     * Safety net in case scrollend never fires for some reason
+     * (e.g. scroll gets interrupted with 0 distance).
+     */
+    suppressTimeout = setTimeout(() => {
+      suppressScrollSpy = false;
+      window.removeEventListener("scrollend", resume);
+    }, 1200);
+  } else {
+    /*
+     * Fallback for browsers without scrollend support
+     * (older Safari). Smooth scrolls typically settle well
+     * under a second even over long distances.
+     */
+    suppressTimeout = setTimeout(() => {
+      suppressScrollSpy = false;
+    }, 1000);
+  }
+}
+
+/* ============================================================
    SMOOTH SECTION SCROLL
    ============================================================ */
 
@@ -81,20 +222,10 @@ document
 
       const hasHash = url.hash && url.hash.length > 1;
 
-      /*
-       * If this is another page, allow the browser to navigate
-       * normally.
-       *
-       * Example:
-       * /portfolio-v2/public/index.php#projects-section
-       */
       if (!isSamePage) {
         return;
       }
 
-      /*
-       * No hash means this isn't a section link.
-       */
       if (!hasHash) {
         return;
       }
@@ -112,17 +243,14 @@ document
         navToggle.setAttribute("aria-expanded", "false");
       }
 
-      /*
-       * Calculate navbar height.
-       */
-      const nav = document.querySelector(".site-nav");
-
-      const navHeight = nav ? nav.offsetHeight : 0;
+      const navHeightNow = nav ? nav.offsetHeight : 0;
 
       /*
        * Home / top.
        */
       if (url.hash === "#top") {
+        lockActiveDuringScroll("top");
+
         window.scrollTo({
           top: 0,
           behavior: "smooth",
@@ -131,21 +259,16 @@ document
         return;
       }
 
-      /*
-       * Find the section on the current page.
-       */
       const target = document.querySelector(url.hash);
 
       if (!target) {
         return;
       }
 
-      /*
-       * Scroll to the section while accounting
-       * for the fixed navbar.
-       */
+      lockActiveDuringScroll(target.id);
+
       const top =
-        target.getBoundingClientRect().top + window.scrollY - navHeight;
+        target.getBoundingClientRect().top + window.scrollY - navHeightNow;
 
       window.scrollTo({
         top,
@@ -153,40 +276,3 @@ document
       });
     });
   });
-
-/* ============================================================
-   ACTIVE SECTION
-   ============================================================ */
-
-const sections = document.querySelectorAll('[id$="-section"]');
-
-const navLinks = document.querySelectorAll(".nav-link");
-
-const nav = document.querySelector(".site-nav");
-
-if (sections.length && navLinks.length) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-
-        navLinks.forEach((link) => {
-          link.classList.toggle(
-            "active",
-            link.dataset.section === entry.target.id,
-          );
-        });
-      });
-    },
-
-    {
-      rootMargin: `-${(nav?.offsetHeight || 0) + 20}px 0px -60% 0px`,
-    },
-  );
-
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
-}

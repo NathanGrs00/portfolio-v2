@@ -265,10 +265,7 @@ nav.site-nav {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .nav-right {
-    display: none;
+    margin-left: auto;
   }
 
   .nav-items {
@@ -290,6 +287,10 @@ nav.site-nav {
     padding-block: var(--space-2);
 
     box-shadow: var(--shadow-md);
+  }
+
+  .nav-right {
+    margin-left: 0;
   }
 
   .nav-items.open {
