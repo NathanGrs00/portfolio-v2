@@ -69,7 +69,7 @@
                 </a>
             <?php endif; ?>
 
-            <a href="/portfolio-v2/public/project.php?id=<?= urlencode($item['id']) ?>" class="project-ov-view-more-button">
+            <a href="project.php?id=<?= urlencode($item['id']) ?>" class="project-ov-view-more-button">
                 View more
             </a>
         </div>

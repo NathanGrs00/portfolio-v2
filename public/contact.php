@@ -132,4 +132,4 @@ function h($str) {
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="/portfolio-v2/public/assets/js/contact-emailjs.js"></script>
+<script src="/assets/js/contact-emailjs.js"></script>

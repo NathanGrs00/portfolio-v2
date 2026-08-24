@@ -46,10 +46,10 @@ foreach ($technologyRows as $technology) {
 
     <title><?= htmlspecialchars($project['name']) ?> | Nathan Geers</title>
 
-    <link rel="stylesheet" href="/portfolio-v2/public/assets/css/index.css">
-    <link rel="stylesheet" href="/portfolio-v2/public/assets/css/navbar.css">
-    <link rel="stylesheet" href="/portfolio-v2/public/assets/css/footer.css">
-    <link rel="stylesheet" href="/portfolio-v2/public/assets/css/project-detail.css">
+    <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/project-detail.css">
 </head>
 <body>
 
@@ -58,7 +58,7 @@ foreach ($technologyRows as $technology) {
 <main class="main-content">
     <div class="project-detail-section">
 
-        <a href="/portfolio-v2/public/index.php#projects-section" class="project-detail-back">
+        <a href="/index.php#projects-section" class="project-detail-back">
             <i class="ti ti-arrow-left"></i>
             Back to projects
         </a>

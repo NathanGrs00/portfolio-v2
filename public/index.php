@@ -19,10 +19,10 @@ foreach ($technologyRows as $technology) {
 
     <title>Nathan Geers | Portfolio</title>
 
-    <link rel="stylesheet" href="/portfolio-v2/public/assets/css/index.css">
-    <link rel="stylesheet" href="/portfolio-v2/public/assets/css/contact.css">
-    <link rel="stylesheet" href="/portfolio-v2/public/assets/css/footer.css">
-    <link rel="stylesheet" href="/portfolio-v2/public/assets/css/preloader.css">
+    <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="/assets/css/contact.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="icon" href="/assets/img/logo_v2.png" type="image/x-icon">
 </head>
 
 <body id="top">
@@ -79,10 +79,10 @@ foreach ($technologyRows as $technology) {
     </div>
 </footer>
 
-<script src="/portfolio-v2/public/assets/js/preloader.js"></script>
-<script src="/portfolio-v2/public/assets/js/project-filter.js"></script>
+<script src="/assets/js/preloader.js"></script>
+<script src="/assets/js/project-filter.js"></script>
 <script
-    src="/portfolio-v2/public/assets/js/tech-stack-truncate.js"
+    src="/assets/js/tech-stack-truncate.js"
     defer
 ></script>
 

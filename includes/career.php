@@ -10,7 +10,7 @@ $typeLabels = [
 ];
 ?>
 
-<link rel="stylesheet" href="/portfolio-v2/public/assets/css/career.css">
+<link rel="stylesheet" href="/assets/css/career.css">
 
 <div class="career-section" id="career-section">
 

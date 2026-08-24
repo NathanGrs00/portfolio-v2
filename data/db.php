@@ -1,7 +1,7 @@
 <?php
 // Loads Supabase settings and provides a helper for calling the Supabase REST API (PostgREST)
 // instead of connecting directly to a database.
-define('BASE_URL', '/portfolio-v2/public');
+define('BASE_URL', '');
 
 $env = parse_ini_file(__DIR__ . '/../.env');
 

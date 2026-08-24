@@ -70,9 +70,9 @@ $sectionMap = array(
                     : 'ti-circle';
 
                 if ($section) {
-                    $href = '/portfolio-v2/public/index.php#' . $section;
+                    $href = 'index.php#' . $section;
                 } else {
-                    $href = '/portfolio-v2/public/index.php#top';
+                    $href = 'index.php#top';
                 }
 
             ?>

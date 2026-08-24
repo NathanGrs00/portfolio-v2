@@ -5,7 +5,7 @@ $rows  = supabaseRequest('about?select=*&limit=1');
 $about = isset($rows[0]) ? $rows[0] : array();
 ?>
 
-<link rel="stylesheet" href="/portfolio-v2/public/assets/css/about.css">
+<link rel="stylesheet" href="/assets/css/about.css">
 
 <div class="about-section" id="about-section">
     <div class="about-wrapper">
@@ -55,7 +55,7 @@ $about = isset($rows[0]) ? $rows[0] : array();
             </div>
 
             <div class="about-buttons">
-                <a href="/portfolio-v2/public/index.php#career-section" class="about-view-more">
+                <a href="index.php#career-section" class="about-view-more">
                     View more <i class="ti ti-arrow-right"></i>
                 </a>
                 <?php if (!empty($about['github_url'])): ?>
